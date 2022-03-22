@@ -34,7 +34,10 @@ public class CameraMove : MonoBehaviour
 
         if (drag)
         {
-            Camera.main.transform.position = origin - difference;
+            Vector3 newPos = origin - difference;
+            newPos.y = 10;
+
+            Camera.main.transform.position = newPos;
 
             // TODO fix this to restrict drag area
             //Camera.main.transform.position = new Vector3(

@@ -35,6 +35,11 @@ public class CameraMove : MonoBehaviour
         if (drag)
         {
             Camera.main.transform.position = origin - difference;
+
+            // TODO fix this to restrict drag area
+            //Camera.main.transform.position = new Vector3(
+            //Mathf.Clamp(Camera.main.transform.position.x, -1, 4),
+            //Mathf.Clamp(Camera.main.transform.position.y, 0, 0), transform.position.z);
         }
 
         if (Input.GetMouseButton(1))

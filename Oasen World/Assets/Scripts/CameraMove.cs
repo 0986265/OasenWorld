@@ -18,7 +18,7 @@ public class CameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(1))
         {
             difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
             if (drag == false)
@@ -45,10 +45,10 @@ public class CameraMove : MonoBehaviour
             //Mathf.Clamp(Camera.main.transform.position.y, 0, 0), transform.position.z);
         }
 
-        if (Input.GetMouseButton(1))
-        {
-            Camera.main.transform.position = resetCamera;
-        }
+        //if (Input.GetMouseButton(1))
+        //{
+        //   Camera.main.transform.position = resetCamera;
+        //}
     }
 
     // Update is called once per frame

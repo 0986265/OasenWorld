@@ -455,14 +455,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a307a355f97478ba09aaae49464062, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2f5eebec49e49eaa9f66f2a7d4f384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   zoomChange: 10
   smoothChange: 10
-  minSize: 7
+  minSize: 5
   maxSize: 30
-  zoom: 0
+  zoomTo: 30
 --- !u!1001 &1525360895
 PrefabInstance:
   m_ObjectHideFlags: 0

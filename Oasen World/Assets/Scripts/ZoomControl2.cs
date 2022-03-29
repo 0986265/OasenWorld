@@ -24,13 +24,21 @@ public class ZoomControl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speed = 100;
+        var speed = 150;
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && transform.rotation.x >= 0)
+        { // rotates down
+            Debug.Log("limit down");
             transform.Rotate(Vector3.left * speed * Time.deltaTime);
+        }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0 && transform.rotation.x <= 0.2716)
+        { // rotates up
             transform.Rotate(-Vector3.left * speed * Time.deltaTime);
+            Debug.Log("limit up");
+        }
+
+        // Debug.Log(transform.rotation.x);
 
         if (Input.GetMouseButtonDown(0))
         {

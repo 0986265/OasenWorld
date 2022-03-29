@@ -24,12 +24,13 @@ public class ZoomControl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.mouseScrollDelta.y > 0)
-            cam.orthographicSize -= zoomChange * Time.deltaTime * smoothChange;
-        if (Input.mouseScrollDelta.y < 0)
-            cam.orthographicSize += zoomChange * Time.deltaTime * smoothChange;
+        var speed = 100;
 
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minSize, maxSize);
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            transform.Rotate(Vector3.left * speed * Time.deltaTime);
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            transform.Rotate(-Vector3.left * speed * Time.deltaTime);
 
         if (Input.GetMouseButtonDown(0))
         {

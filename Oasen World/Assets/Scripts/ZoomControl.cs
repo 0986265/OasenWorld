@@ -29,4 +29,16 @@ public class ZoomControl : MonoBehaviour
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minSize, maxSize);
 
     }
+
+    private void HandleZoom()
+    {
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            GameObject.Find("Main Camera").transform.rotation = new Quaternion(0, 45, 0, 0);
+        }
+        if (Input.mouseScrollDelta.y < 0)
+        {
+            GameObject.Find("Main Camera").transform.rotation = new Quaternion(0, 100, 0, 0);
+        }
+    }
 }

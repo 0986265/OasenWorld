@@ -25,19 +25,19 @@ public class DruppieBehaviour : MonoBehaviour
     public IEnumerator DruppieMovement()
     {
         yield return new WaitForSeconds(2f);
-        //Druppie Anim Jump over river
         GetComponent<Animator>().Play("Jump Rivier");
         yield return new WaitForSeconds(2f);
         this.gameObject.transform.position = druppiePoint.position;
         this.gameObject.transform.rotation = druppiePoint.rotation;
         GetComponent<Animator>().Play("Wave");
-        yield return new WaitForSeconds(2f);
+        DialogueTrigger.instance.TriggerDialogue();
+        yield return new WaitForSeconds(3f);
         GetComponent<Animator>().Play("Idle");
         //Druppie Explain
         yield return new WaitForSeconds(4f);
-        this.gameObject.transform.rotation = druppiePointBack.rotation;
+        /*this.gameObject.transform.rotation = druppiePointBack.rotation;
         GetComponent<Animator>().Play("Jump Rivier");
         yield return new WaitForSeconds(2f);
-        this.gameObject.transform.position = druppiePointFinal.position;
+        this.gameObject.transform.position = druppiePointFinal.position;*/
     }
 }

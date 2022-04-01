@@ -35,7 +35,7 @@ public class CameraMove : MonoBehaviour
         if (drag)
         {
             Vector3 newPos = origin - difference;
-            newPos.y = 10;
+            newPos.y = 6;
 
             Camera.main.transform.position = newPos;
 

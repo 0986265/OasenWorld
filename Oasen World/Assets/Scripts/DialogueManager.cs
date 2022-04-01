@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", true);
 
+        ZoomControl2.instance.ZoomChange(false);
+
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -35,15 +37,20 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        DisplayNextSentence(false);
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence(bool explain)
     {
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
+        }
+
+        if(explain)
+        {
+            DruppieBehaviour.instance.DruppieExplain();
         }
 
         string sentence = sentences.Dequeue();
@@ -53,5 +60,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        ZoomControl2.instance.ZoomChange(true);
+
+        //Temp
+        DruppieBehaviour.instance.StartCoroutine(DruppieBehaviour.instance.DruppieGone());
     }
 }

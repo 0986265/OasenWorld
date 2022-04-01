@@ -13,12 +13,23 @@ public class ZoomControl2 : MonoBehaviour
 
     public float zoomTo = 30;
 
+    private bool zoomEnabled = true;
 
+    public static ZoomControl2 instance;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +51,7 @@ public class ZoomControl2 : MonoBehaviour
 
         // Debug.Log(transform.rotation.x);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && zoomEnabled)
         {
             if (zoomedIn)
             {
@@ -59,5 +70,10 @@ public class ZoomControl2 : MonoBehaviour
 
 
 
+    }
+
+    public void ZoomChange(bool enabledBool)
+    {
+        zoomEnabled = enabledBool;
     }
 }

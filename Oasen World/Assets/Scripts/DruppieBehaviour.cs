@@ -9,11 +9,22 @@ public class DruppieBehaviour : MonoBehaviour
     public Transform druppiePointBack;
     public Transform druppiePointFinal;
 
+    public static DruppieBehaviour instance;
+
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DruppieMovement());
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
@@ -35,9 +46,18 @@ public class DruppieBehaviour : MonoBehaviour
         GetComponent<Animator>().Play("Idle");
         //Druppie Explain
         yield return new WaitForSeconds(4f);
-        /*this.gameObject.transform.rotation = druppiePointBack.rotation;
+    }
+
+    public void DruppieExplain()
+    {
+        GetComponent<Animator>().Play("Explain");
+    }
+
+    public IEnumerator DruppieGone()
+    {
+        this.gameObject.transform.rotation = druppiePointBack.rotation;
         GetComponent<Animator>().Play("Jump Rivier");
         yield return new WaitForSeconds(2f);
-        this.gameObject.transform.position = druppiePointFinal.position;*/
+        this.gameObject.transform.position = druppiePointFinal.position;
     }
 }
